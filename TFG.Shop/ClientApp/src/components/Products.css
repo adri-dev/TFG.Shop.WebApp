@@ -1,0 +1,8 @@
+.products-container {
+    display: flex;    
+}
+
+.products-container .card {
+    flex: 1 1 33.333%;
+    max-width: 33.333%;
+}
