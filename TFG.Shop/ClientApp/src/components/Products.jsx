@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { catalogService } from "../shared/catalog.service";
 import { Card, Button, Container } from "react-bootstrap";
-import './Products.css';
+import "./Products.css";
 
 export default function Products({ categoryId }) {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
     const getCategoryProducts = async () => {
-      const catProducts = await catalogService.getCategoryProducts(categoryId);
+      const catProducts = categoryId
+        ? await catalogService.getCategoryProducts(categoryId)
+        : [];
 
       setProducts(catProducts);
     };

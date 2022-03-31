@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shop-dply
+spec:
+  selector:
+    matchLabels:
+      app: shop-ui
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: shop-ui
+    spec:
+      containers:
+      - image: docker.io/wadrydev/tfgshop
+        name: shop-ui
+        resources: {}
+        ports:
+          - containerPort: 80
+        env:
+        - name: BackendUrls__Products
+          value: http://$(TFGPRODUCTS_SVC_SERVICE_HOST):$(TFGPRODUCTS_SVC_SERVICE_PORT)/
+        - name: BackendUrls__Orders
+          value: http://$(TFGORDERS_SVC_SERVICE_HOST):$(TFGORDERS_SVC_SERVICE_PORT)/
