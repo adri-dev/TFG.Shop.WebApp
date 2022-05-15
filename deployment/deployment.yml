@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: shop-dply
+  name: webapp-dply
 spec:
   selector:
     matchLabels:
-      app: shop-ui
+      app: webapp-ui
   strategy: {}
   template:
     metadata:
       labels:
-        app: shop-ui
+        app: webapp-ui
     spec:
       containers:
       - image: docker.io/wadrydev/tfgshop
-        name: shop-ui
+        name: webapp-ui
         resources: {}
         ports:
           - containerPort: 80
